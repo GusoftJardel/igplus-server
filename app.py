@@ -7,7 +7,7 @@ app = Flask(__name__)
 app.secret_key = 'sua_chave_secreta'
 
 # Geração da chave simétrica para criptografia
-chave_criptografia = Fernet.generate_key()
+chave_criptografia = b'wsXMP8_thOq-F-TT5WtQquoeMFYHQD5j_FffMyymC64='
 fernet = Fernet(chave_criptografia)
 
 PASTA_LICENCAS = 'licencas'
