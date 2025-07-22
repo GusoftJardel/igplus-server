@@ -1,0 +1,27 @@
+app = "nome-do-seu-app"  # Fly vai gerar isso automaticamente, ou você pode escolher
+
+primary_region = "gru"  # Use "gru" para São Paulo (ou "iad" para Virgínia)
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  PORT = "8080"
+
+[[services]]
+  internal_port = 8080
+  protocol = "tcp"
+
+  [[services.ports]]
+    handlers = ["http"]
+    port = 80
+
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = 443
+
+  [[services.tcp_checks]]
+    interval = "15s"
+    timeout = "2s"
+    grace_period = "10s"
+    restart_limit = 0
